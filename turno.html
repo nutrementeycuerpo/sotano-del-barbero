@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Sótano del Barbero se mudó</title>
+  <script>
+    // La barbería ahora está en https://sotanodelbarbero.github.io
+    // Se lleva la misma página (cita, turno, panel…), lo que viene después del ? y del #,
+    // y los datos que el cliente tenía guardados en su celular (su cita, su turno, su nombre).
+    (function () {
+      var nueva = "https://sotanodelbarbero.github.io";
+      var ruta = location.pathname.replace(/^\/sotano-del-barbero/, "") || "/";
+      var datos = {};
+      try { ["cliente", "cita", "citas", "turno"].forEach(function (k) { var v = localStorage.getItem(k); if (v !== null) datos[k] = v; }); } catch (e) {}
+      var hash = location.hash;
+      if (!hash && Object.keys(datos).length) hash = "#migrar=" + encodeURIComponent(JSON.stringify(datos));
+      location.replace(nueva + ruta + location.search + hash);
+    })();
+  </script>
+  <style>body{font:16px -apple-system,system-ui,sans-serif;background:#0b0b0a;color:#f2ede4;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center;padding:16px}a{color:#6fa8dc}</style>
+</head>
+<body>
+  <p>Sótano del Barbero se mudó a<br><a href="https://sotanodelbarbero.github.io">sotanodelbarbero.github.io</a></p>
+</body>
+</html>
